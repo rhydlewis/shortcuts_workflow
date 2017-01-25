@@ -45,6 +45,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>474E2EAB-BEC1-4D2D-A4DF-0D4A2345E0AA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EC75BCF7-4BAD-46EE-8BE6-DC5638D45539</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>4B411F05-8D71-4250-B341-49E413422F19</key>
 		<array>
 			<dict>
@@ -172,6 +185,26 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  tell application "Google Chrome"
+    set pageUrl to get URL of active tab of first window
+  end tell
+  tell application "Safari" to add reading list item pageUrl
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>EC75BCF7-4BAD-46EE-8BE6-DC5638D45539</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
@@ -206,6 +239,27 @@ end alfred_script</string>
 			<string>alfred.workflow.action.applescript</string>
 			<key>uid</key>
 			<string>F2E723B5-2226-4C03-91A2-A3FFC1B15E9C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>c2rl</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Add current Chrome page to Safari's reading list</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>474E2EAB-BEC1-4D2D-A4DF-0D4A2345E0AA</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -689,6 +743,13 @@ open -a Annotate "$SSHOT_PATH"</string>
 			<key>ypos</key>
 			<integer>260</integer>
 		</dict>
+		<key>474E2EAB-BEC1-4D2D-A4DF-0D4A2345E0AA</key>
+		<dict>
+			<key>xpos</key>
+			<integer>990</integer>
+			<key>ypos</key>
+			<integer>100</integer>
+		</dict>
 		<key>4AEF7B73-F17F-4DC5-A41E-43BDD1E1CF1B</key>
 		<dict>
 			<key>xpos</key>
@@ -765,6 +826,13 @@ open -a Annotate "$SSHOT_PATH"</string>
 			<integer>590</integer>
 			<key>ypos</key>
 			<integer>410</integer>
+		</dict>
+		<key>EC75BCF7-4BAD-46EE-8BE6-DC5638D45539</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1210</integer>
+			<key>ypos</key>
+			<integer>100</integer>
 		</dict>
 		<key>EF24175D-011C-4CC2-A9D3-9FBD3ECB45C0</key>
 		<dict>
