@@ -70,6 +70,42 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>54C5F84C-6D11-42CF-B02D-0D0A484E9742</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Run {query} $tmpfile | pbcopy</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>4D31C406-3C89-4551-AD3A-CF7D298EB448</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>79BECD35-280D-4835-8EE9-FD76A4D58F2A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>54C5F84C-6D11-42CF-B02D-0D0A484E9742</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>79BECD35-280D-4835-8EE9-FD76A4D58F2A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>86E8DB71-E2C2-4E1B-AE8F-59B3E6376107</key>
 		<array>
@@ -310,50 +346,6 @@ pbpaste | nl -s "$bullet " | cut -c7- | pbcopy</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>DB748BE5-D5BB-4BFF-A503-0DE77A802D72</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>cmd</string>
-				<key>subtext</key>
-				<string>Run an arbitary command against the contents of the pasteboard and then copy the results to the pasteboard</string>
-				<key>text</key>
-				<string>Run command against pasteboard</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>4B411F05-8D71-4250-B341-49E413422F19</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>pbpaste | {query} | pbcopy</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>4D31C406-3C89-4551-AD3A-CF7D298EB448</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -696,6 +688,94 @@ open -a Annotate "$SSHOT_PATH"</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>pbpaste | {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>4D31C406-3C89-4551-AD3A-CF7D298EB448</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>cmd</string>
+				<key>subtext</key>
+				<string>Run pbpaste | {query} | pbcopy</string>
+				<key>text</key>
+				<string>Run command against pasteboard</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>4B411F05-8D71-4250-B341-49E413422F19</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>79BECD35-280D-4835-8EE9-FD76A4D58F2A</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>PATH=$PATH:/usr/local/bin/
+tmpfile=$(mktemp /tmp/alfred-tmp.XXXXXX)
+pbpaste &gt; "$tmpfile"
+{query} "$tmpfile"
+rm "$tmpfile"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>54C5F84C-6D11-42CF-B02D-0D0A484E9742</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -760,16 +840,23 @@ open -a Annotate "$SSHOT_PATH"</string>
 		<key>4B411F05-8D71-4250-B341-49E413422F19</key>
 		<dict>
 			<key>xpos</key>
-			<integer>160</integer>
+			<integer>150</integer>
 			<key>ypos</key>
-			<integer>260</integer>
+			<integer>910</integer>
 		</dict>
 		<key>4D31C406-3C89-4551-AD3A-CF7D298EB448</key>
 		<dict>
 			<key>xpos</key>
-			<integer>370</integer>
+			<integer>360</integer>
 			<key>ypos</key>
-			<integer>260</integer>
+			<integer>860</integer>
+		</dict>
+		<key>54C5F84C-6D11-42CF-B02D-0D0A484E9742</key>
+		<dict>
+			<key>xpos</key>
+			<integer>360</integer>
+			<key>ypos</key>
+			<integer>980</integer>
 		</dict>
 		<key>6515CD2E-ADF6-40EA-905C-EB3503C0FEAF</key>
 		<dict>
@@ -777,6 +864,13 @@ open -a Annotate "$SSHOT_PATH"</string>
 			<integer>790</integer>
 			<key>ypos</key>
 			<integer>410</integer>
+		</dict>
+		<key>79BECD35-280D-4835-8EE9-FD76A4D58F2A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>590</integer>
+			<key>ypos</key>
+			<integer>910</integer>
 		</dict>
 		<key>86E8DB71-E2C2-4E1B-AE8F-59B3E6376107</key>
 		<dict>
