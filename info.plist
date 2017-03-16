@@ -19,6 +19,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>2B905310-C3A4-45C5-BB8E-FA74560200D1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4D31C406-3C89-4551-AD3A-CF7D298EB448</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>2EEB92D3-873A-443E-9441-0CCD079AC104</key>
 		<array>
 			<dict>
@@ -62,7 +75,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>4D31C406-3C89-4551-AD3A-CF7D298EB448</string>
+				<string>2B905310-C3A4-45C5-BB8E-FA74560200D1</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -93,12 +106,32 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>B5F607D0-D901-4D6F-91A9-19A27567F481</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>54C5F84C-6D11-42CF-B02D-0D0A484E9742</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>79BECD35-280D-4835-8EE9-FD76A4D58F2A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>B5F607D0-D901-4D6F-91A9-19A27567F481</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -352,23 +385,6 @@ pbpaste | nl -s "$bullet " | cut -c7- | pbcopy</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>D6B2D3BF-D58D-4367-A7CD-AE2DD4C0174F</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -388,6 +404,23 @@ print(urllib.quote(query))</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>3FB0D83F-BE4D-4BA4-B1FD-4756C61013B5</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>D6B2D3BF-D58D-4367-A7CD-AE2DD4C0174F</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -523,6 +556,39 @@ end alfred_script</string>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
+				<string>data=$(pbpaste)
+if [ $(echo "$data" | wc -l) -gt 1 ];
+then
+	change=${data//
+/	}
+else
+    change=${data//	/
+}
+fi
+echo -e "$change" | pbcopy
+</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A8913D96-9D15-464D-822D-3D5F7B312AA8</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
 				<string>pbpaste | sort -u | pbcopy</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
@@ -582,39 +648,6 @@ open -a Napkin "$SSHOT_PATH"</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>003B3D06-2269-4422-8E54-3D6A0B2FC6E0</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>data=$(pbpaste)
-if [ $(echo "$data" | wc -l) -gt 1 ];
-then
-	change=${data//
-/	}
-else
-    change=${data//	/
-}
-fi
-echo -e "$change" | pbcopy
-</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>A8913D96-9D15-464D-822D-3D5F7B312AA8</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -687,6 +720,24 @@ open -a Annotate "$SSHOT_PATH"</string>
 			<string>1860D0C7-3B6C-426B-BEC6-AB267143F596</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>cmd</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>2B905310-C3A4-45C5-BB8E-FA74560200D1</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -776,6 +827,27 @@ rm "$tmpfile"</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Results from {var:cmd}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>B5F607D0-D901-4D6F-91A9-19A27567F481</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -808,6 +880,13 @@ rm "$tmpfile"</string>
 			<integer>790</integer>
 			<key>ypos</key>
 			<integer>670</integer>
+		</dict>
+		<key>2B905310-C3A4-45C5-BB8E-FA74560200D1</key>
+		<dict>
+			<key>xpos</key>
+			<integer>290</integer>
+			<key>ypos</key>
+			<integer>810</integer>
 		</dict>
 		<key>2EEB92D3-873A-443E-9441-0CCD079AC104</key>
 		<dict>
@@ -898,7 +977,14 @@ rm "$tmpfile"</string>
 			<key>xpos</key>
 			<integer>1200</integer>
 			<key>ypos</key>
-			<integer>590</integer>
+			<integer>470</integer>
+		</dict>
+		<key>B5F607D0-D901-4D6F-91A9-19A27567F481</key>
+		<dict>
+			<key>xpos</key>
+			<integer>580</integer>
+			<key>ypos</key>
+			<integer>1030</integer>
 		</dict>
 		<key>D6B2D3BF-D58D-4367-A7CD-AE2DD4C0174F</key>
 		<dict>
