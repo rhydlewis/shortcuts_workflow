@@ -140,6 +140,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>766A08B2-4EC3-437C-B40D-883C6A53B09E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FF6D03CB-90EE-41ED-8A1E-B490409AAC98</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>86E8DB71-E2C2-4E1B-AE8F-59B3E6376107</key>
 		<array>
 			<dict>
@@ -181,6 +194,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>1860D0C7-3B6C-426B-BEC6-AB267143F596</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C5E05CEF-99DA-4F9C-880E-F8AAFCA03E47</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C01FB36A-DC36-467B-9089-5E20F530BAC2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -232,6 +258,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>3FB0D83F-BE4D-4BA4-B1FD-4756C61013B5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>FF6D03CB-90EE-41ED-8A1E-B490409AAC98</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5C5C5FE4-8344-41C9-9CBF-9C55320AEED0</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -410,23 +449,6 @@ print(urllib.quote(query))</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>D6B2D3BF-D58D-4367-A7CD-AE2DD4C0174F</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -444,6 +466,23 @@ print(urllib.quote(query))</string>
 			<string>F5EA9B5F-EA9D-4895-9649-59A34D0936D0</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>D6B2D3BF-D58D-4367-A7CD-AE2DD4C0174F</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -654,6 +693,71 @@ open -a Napkin "$SSHOT_PATH"</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>5C5C5FE4-8344-41C9-9CBF-9C55320AEED0</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>pbdata = `pbpaste`
+pattern = "\n"
+replacement = '\n'
+result = pbdata.gsub(pattern, replacement)
+puts result</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FF6D03CB-90EE-41ED-8A1E-B490409AAC98</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>newline</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Replace actual newlines with text "\n"</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>766A08B2-4EC3-437C-B40D-883C6A53B09E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -736,6 +840,46 @@ open -a Annotate "$SSHOT_PATH"</string>
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
 			<string>2B905310-C3A4-45C5-BB8E-FA74560200D1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://www.timeanddate.com/worldclock/converter.html?iso={query}&amp;p1=240&amp;p2=136&amp;p3=179</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>C01FB36A-DC36-467B-9089-5E20F530BAC2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>tdc</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Time Difference Calculator</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>C5E05CEF-99DA-4F9C-880E-F8AAFCA03E47</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -937,12 +1081,26 @@ rm "$tmpfile"</string>
 			<key>ypos</key>
 			<integer>980</integer>
 		</dict>
+		<key>5C5C5FE4-8344-41C9-9CBF-9C55320AEED0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1400</integer>
+			<key>ypos</key>
+			<integer>620</integer>
+		</dict>
 		<key>6515CD2E-ADF6-40EA-905C-EB3503C0FEAF</key>
 		<dict>
 			<key>xpos</key>
 			<integer>790</integer>
 			<key>ypos</key>
 			<integer>410</integer>
+		</dict>
+		<key>766A08B2-4EC3-437C-B40D-883C6A53B09E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1000</integer>
+			<key>ypos</key>
+			<integer>620</integer>
 		</dict>
 		<key>79BECD35-280D-4835-8EE9-FD76A4D58F2A</key>
 		<dict>
@@ -986,12 +1144,26 @@ rm "$tmpfile"</string>
 			<key>ypos</key>
 			<integer>1030</integer>
 		</dict>
+		<key>C01FB36A-DC36-467B-9089-5E20F530BAC2</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1000</integer>
+			<key>ypos</key>
+			<integer>820</integer>
+		</dict>
+		<key>C5E05CEF-99DA-4F9C-880E-F8AAFCA03E47</key>
+		<dict>
+			<key>xpos</key>
+			<integer>850</integer>
+			<key>ypos</key>
+			<integer>820</integer>
+		</dict>
 		<key>D6B2D3BF-D58D-4367-A7CD-AE2DD4C0174F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>990</integer>
+			<integer>1000</integer>
 			<key>ypos</key>
-			<integer>260</integer>
+			<integer>270</integer>
 		</dict>
 		<key>DB748BE5-D5BB-4BFF-A503-0DE77A802D72</key>
 		<dict>
@@ -1041,6 +1213,13 @@ rm "$tmpfile"</string>
 			<integer>590</integer>
 			<key>ypos</key>
 			<integer>260</integer>
+		</dict>
+		<key>FF6D03CB-90EE-41ED-8A1E-B490409AAC98</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1200</integer>
+			<key>ypos</key>
+			<integer>620</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
