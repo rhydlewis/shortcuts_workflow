@@ -6,11 +6,50 @@
 	<string>net.rhydlewis.alfred.shortcutsworkflow</string>
 	<key>connections</key>
 	<dict>
+		<key>0605E08B-291B-4FD7-99F3-7FAE41926561</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5C5C5FE4-8344-41C9-9CBF-9C55320AEED0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>177DB255-4E35-47D7-A0FC-19C6F3951089</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>5C5C5FE4-8344-41C9-9CBF-9C55320AEED0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>1B6EB4B0-876A-4C13-98C1-309C89B93A0A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0605E08B-291B-4FD7-99F3-7FAE41926561</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>1D9E8244-52F7-4304-90F0-374BFF6093C9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>92D792B1-0836-46A1-9391-95067D6F9EF8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -205,11 +244,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>989B3E42-1298-4CA7-BB7C-634CE0A0F2AF</key>
+		<key>92D792B1-0836-46A1-9391-95067D6F9EF8</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>F2E723B5-2226-4C03-91A2-A3FFC1B15E9C</string>
+				<string>5C5C5FE4-8344-41C9-9CBF-9C55320AEED0</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -348,32 +387,11 @@
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>ssc</string>
-				<key>subtext</key>
-				<string>Launch Self Control and Close Non-Blockable Apps</string>
-				<key>text</key>
-				<string>Start Self Control</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>989B3E42-1298-4CA7-BB7C-634CE0A0F2AF</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>c2rl</string>
+				<string>f2rl</string>
 				<key>subtext</key>
 				<string></string>
 				<key>text</key>
-				<string>Add current Chrome page to Safari's reading list</string>
+				<string>Add current Firefox page to Safari's reading list</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
@@ -389,7 +407,7 @@
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-  tell application "Google Chrome"
+  tell application "Firefox"
     set pageUrl to get URL of active tab of first window
   end tell
   tell application "Safari" to add reading list item pageUrl
@@ -401,25 +419,6 @@ end alfred_script</string>
 			<string>alfred.workflow.action.applescript</string>
 			<key>uid</key>
 			<string>EC75BCF7-4BAD-46EE-8BE6-DC5638D45539</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>applescript</key>
-				<string>on alfred_script(q)
-   tell application "Skype" to quit
-   tell application "Slack" to quit
-   tell application "SelfControl" to start
-end alfred_script</string>
-				<key>cachescript</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.applescript</string>
-			<key>uid</key>
-			<string>F2E723B5-2226-4C03-91A2-A3FFC1B15E9C</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -534,7 +533,7 @@ print(urllib.quote(query))</string>
 			<key>uid</key>
 			<string>D6B2D3BF-D58D-4367-A7CD-AE2DD4C0174F</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -757,7 +756,7 @@ open -a Napkin "$SSHOT_PATH"</string>
 			<key>uid</key>
 			<string>5C5C5FE4-8344-41C9-9CBF-9C55320AEED0</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -928,6 +927,50 @@ print result</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>repl sp</string>
+				<key>subtext</key>
+				<string>Enter "pattern"</string>
+				<key>text</key>
+				<string>Replace pattern in pasteboard text with space</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>1B6EB4B0-876A-4C13-98C1-309C89B93A0A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>8</integer>
+				<key>script</key>
+				<string>pbpaste | sed 's/{query}/ /g'</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0605E08B-291B-4FD7-99F3-7FAE41926561</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string>{query}</string>
 				<key>variables</key>
@@ -969,6 +1012,55 @@ print result</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>pbdata = `pbpaste`
+result = ""
+pbdata.each_line do |line|
+  result += line[2..-1]
+end
+print result</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>92D792B1-0836-46A1-9391-95067D6F9EF8</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>rmbul</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Remove bullets from text</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>1D9E8244-52F7-4304-90F0-374BFF6093C9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -1001,6 +1093,33 @@ print result</string>
 			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
 			<string>79BECD35-280D-4835-8EE9-FD76A4D58F2A</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>PATH=$PATH:/usr/local/bin/
+tmpfile=$(mktemp /tmp/alfred-tmp.XXXXXX)
+pbpaste &gt; "$tmpfile"
+{query} "$tmpfile"
+rm "$tmpfile"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>54C5F84C-6D11-42CF-B02D-0D0A484E9742</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -1093,33 +1212,6 @@ print result</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>PATH=$PATH:/usr/local/bin/
-tmpfile=$(mktemp /tmp/alfred-tmp.XXXXXX)
-pbpaste &gt; "$tmpfile"
-{query} "$tmpfile"
-rm "$tmpfile"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>54C5F84C-6D11-42CF-B02D-0D0A484E9742</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -1150,6 +1242,13 @@ rm "$tmpfile"</string>
 			<key>ypos</key>
 			<integer>570</integer>
 		</dict>
+		<key>0605E08B-291B-4FD7-99F3-7FAE41926561</key>
+		<dict>
+			<key>xpos</key>
+			<integer>790</integer>
+			<key>ypos</key>
+			<integer>800</integer>
+		</dict>
 		<key>177DB255-4E35-47D7-A0FC-19C6F3951089</key>
 		<dict>
 			<key>xpos</key>
@@ -1163,6 +1262,20 @@ rm "$tmpfile"</string>
 			<integer>360</integer>
 			<key>ypos</key>
 			<integer>690</integer>
+		</dict>
+		<key>1B6EB4B0-876A-4C13-98C1-309C89B93A0A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>580</integer>
+			<key>ypos</key>
+			<integer>790</integer>
+		</dict>
+		<key>1D9E8244-52F7-4304-90F0-374BFF6093C9</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1000</integer>
+			<key>ypos</key>
+			<integer>880</integer>
 		</dict>
 		<key>214CC9ED-B2F4-4FEC-8A63-FD1BD9B90029</key>
 		<dict>
@@ -1195,9 +1308,9 @@ rm "$tmpfile"</string>
 		<key>3F77F8CD-6BF2-4B4F-94F5-049B123AAFD5</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1330</integer>
+			<integer>1320</integer>
 			<key>ypos</key>
-			<integer>920</integer>
+			<integer>1000</integer>
 		</dict>
 		<key>3FB0D83F-BE4D-4BA4-B1FD-4756C61013B5</key>
 		<dict>
@@ -1244,9 +1357,9 @@ rm "$tmpfile"</string>
 		<key>557FBC35-3F5A-4901-92DA-D37A9F8495A3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1170</integer>
+			<integer>1160</integer>
 			<key>ypos</key>
-			<integer>920</integer>
+			<integer>1000</integer>
 		</dict>
 		<key>5C5C5FE4-8344-41C9-9CBF-9C55320AEED0</key>
 		<dict>
@@ -1283,12 +1396,12 @@ rm "$tmpfile"</string>
 			<key>ypos</key>
 			<integer>670</integer>
 		</dict>
-		<key>989B3E42-1298-4CA7-BB7C-634CE0A0F2AF</key>
+		<key>92D792B1-0836-46A1-9391-95067D6F9EF8</key>
 		<dict>
 			<key>xpos</key>
-			<integer>590</integer>
+			<integer>1190</integer>
 			<key>ypos</key>
-			<integer>100</integer>
+			<integer>870</integer>
 		</dict>
 		<key>9FD4348D-5C56-4069-B752-1F54F2D023F6</key>
 		<dict>
@@ -1314,16 +1427,16 @@ rm "$tmpfile"</string>
 		<key>C01FB36A-DC36-467B-9089-5E20F530BAC2</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1010</integer>
+			<integer>1000</integer>
 			<key>ypos</key>
-			<integer>920</integer>
+			<integer>1000</integer>
 		</dict>
 		<key>C5E05CEF-99DA-4F9C-880E-F8AAFCA03E47</key>
 		<dict>
 			<key>xpos</key>
-			<integer>840</integer>
+			<integer>830</integer>
 			<key>ypos</key>
-			<integer>920</integer>
+			<integer>1000</integer>
 		</dict>
 		<key>C9549E5E-E3BB-4A1F-9BDF-5B65DBA146FD</key>
 		<dict>
@@ -1373,13 +1486,6 @@ rm "$tmpfile"</string>
 			<integer>1000</integer>
 			<key>ypos</key>
 			<integer>470</integer>
-		</dict>
-		<key>F2E723B5-2226-4C03-91A2-A3FFC1B15E9C</key>
-		<dict>
-			<key>xpos</key>
-			<integer>790</integer>
-			<key>ypos</key>
-			<integer>100</integer>
 		</dict>
 		<key>F5EA9B5F-EA9D-4895-9649-59A34D0936D0</key>
 		<dict>
