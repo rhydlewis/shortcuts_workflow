@@ -19,6 +19,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>0E6DAC19-BCC5-410B-B4A0-884CD8C5D79E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>74C84720-A0C2-4C00-A3E1-17EF6710CF89</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>177DB255-4E35-47D7-A0FC-19C6F3951089</key>
 		<array>
 			<dict>
@@ -218,6 +231,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>73F7B9F7-6051-432B-8464-517D7922E39C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5C5C5FE4-8344-41C9-9CBF-9C55320AEED0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>766A08B2-4EC3-437C-B40D-883C6A53B09E</key>
 		<array>
 			<dict>
@@ -249,6 +275,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>5C5C5FE4-8344-41C9-9CBF-9C55320AEED0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>9F6FF90B-5FC0-4DEB-B0E4-06B03AD64B03</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>73F7B9F7-6051-432B-8464-517D7922E39C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -298,6 +337,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>177DB255-4E35-47D7-A0FC-19C6F3951089</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D74766CD-69DC-4E24-9D4D-07C6FB0EF0E0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0E6DAC19-BCC5-410B-B4A0-884CD8C5D79E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -478,6 +530,70 @@ pbpaste | nl -s "$bullet " | cut -c7- | pbcopy</string>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require 'csv'
+query = ARGV[0]
+
+if query
+  col_sep = query
+else
+  col_sep = "\t"
+end
+
+clipboard = `pbpaste`
+rows = CSV.parse(clipboard, col_sep: col_sep)
+column_widths = []
+markdown_rows = []
+separators = ""
+
+rows.each { |row|
+  row.each_with_index { |cell, x|
+    if column_widths[x]
+      column_widths[x] = cell.length if cell.length &gt; column_widths[x]
+    else
+      column_widths[x] = cell.length
+    end
+  }
+}
+
+rows.each { |row | 
+  markdown = "| "
+  row.each_with_index { |cell, index| 
+    suffix = " " * (column_widths[index] - cell.length + 1)
+    markdown += cell + suffix + "| "
+  }
+  markdown_rows &lt;&lt; markdown.strip()
+}
+
+column_widths.each { |width|
+	separators &lt;&lt; "|" + ("-" * (width + 2))
+}
+separators += "|"
+
+markdown_rows.insert(1,separators)
+
+print markdown_rows.join("\n")</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0E6DAC19-BCC5-410B-B4A0-884CD8C5D79E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
 				<string>import urllib
@@ -521,10 +637,33 @@ print(urllib.quote(query))</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>tsv2table</string>
+				<key>subtext</key>
+				<string>Assumes tab separated but specify , for comma separated</string>
+				<key>text</key>
+				<string>Convert a TSV table into Markdown</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>D74766CD-69DC-4E24-9D4D-07C6FB0EF0E0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>autopaste</key>
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -534,6 +673,71 @@ print(urllib.quote(query))</string>
 			<string>D6B2D3BF-D58D-4367-A7CD-AE2DD4C0174F</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>74C84720-A0C2-4C00-A3E1-17EF6710CF89</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>pbdata = `pbpaste`
+result = pbdata.split
+print result.reverse.join(" ")</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>73F7B9F7-6051-432B-8464-517D7922E39C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>reverse</string>
+				<key>subtext</key>
+				<string>Enter "pattern"</string>
+				<key>text</key>
+				<string>Reverse words in pasteboard text</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>9F6FF90B-5FC0-4DEB-B0E4-06B03AD64B03</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -748,6 +952,8 @@ open -a Napkin "$SSHOT_PATH"</string>
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -973,6 +1179,8 @@ print result</string>
 			<dict>
 				<key>argument</key>
 				<string>{query}</string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict>
 					<key>cmd</key>
@@ -1086,6 +1294,8 @@ print result</string>
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -1249,6 +1459,13 @@ print result</string>
 			<key>ypos</key>
 			<integer>800</integer>
 		</dict>
+		<key>0E6DAC19-BCC5-410B-B4A0-884CD8C5D79E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>315</integer>
+			<key>ypos</key>
+			<integer>255</integer>
+		</dict>
 		<key>177DB255-4E35-47D7-A0FC-19C6F3951089</key>
 		<dict>
 			<key>xpos</key>
@@ -1375,6 +1592,20 @@ print result</string>
 			<key>ypos</key>
 			<integer>410</integer>
 		</dict>
+		<key>73F7B9F7-6051-432B-8464-517D7922E39C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1240</integer>
+			<key>ypos</key>
+			<integer>320</integer>
+		</dict>
+		<key>74C84720-A0C2-4C00-A3E1-17EF6710CF89</key>
+		<dict>
+			<key>xpos</key>
+			<integer>465</integer>
+			<key>ypos</key>
+			<integer>310</integer>
+		</dict>
 		<key>766A08B2-4EC3-437C-B40D-883C6A53B09E</key>
 		<dict>
 			<key>xpos</key>
@@ -1402,6 +1633,13 @@ print result</string>
 			<integer>1190</integer>
 			<key>ypos</key>
 			<integer>870</integer>
+		</dict>
+		<key>9F6FF90B-5FC0-4DEB-B0E4-06B03AD64B03</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1025</integer>
+			<key>ypos</key>
+			<integer>365</integer>
 		</dict>
 		<key>9FD4348D-5C56-4069-B752-1F54F2D023F6</key>
 		<dict>
@@ -1449,6 +1687,13 @@ print result</string>
 		<dict>
 			<key>xpos</key>
 			<integer>1000</integer>
+			<key>ypos</key>
+			<integer>270</integer>
+		</dict>
+		<key>D74766CD-69DC-4E24-9D4D-07C6FB0EF0E0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>120</integer>
 			<key>ypos</key>
 			<integer>270</integer>
 		</dict>
